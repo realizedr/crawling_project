@@ -13,8 +13,8 @@ df = pd.read_csv('./crawling_data/wadiz_20220530(2).csv')
 # print(df.head())
 # df.info()
 
-X = df['title']
-Y = df['category']
+# X = df['title']
+# Y = df['category']
 
 encoder = LabelEncoder()
 labeled_Y = encoder.fit_transform(Y)
@@ -70,3 +70,4 @@ print(X_test.shape, Y_test.shape)
 
 xy = X_train, X_test, Y_train, Y_test
 np.save('./crawling_data/wadiz_max_{}_wordsize_{}'.format(max, wordsize), xy)
+
