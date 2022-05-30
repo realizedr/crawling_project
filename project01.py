@@ -9,7 +9,7 @@ import time
 import time
 from selenium import webdriver
 driver = webdriver.Chrome(executable_path= r"./chromedriver.exe")
-driver.get("https://www.wadiz.kr/web/wreward/category/293?keyword=&endYn=ALL&order=recent")
+driver.get("https://www.wadiz.kr/web/wreward/category/287?keyword=&endYn=ALL&order=popular")
 
 time.sleep(2)
 
@@ -38,7 +38,7 @@ for index, value in enumerate(rows):  #enumerate는 리스트가 있는 경우 �
     # result=value.find_element_by_class_name("RewardProjectCard_percent__3TW4_")
     wadiz_title.append(title.text)
     # results_reward.append(result.text)
-    category.append("출판")
+    category.append("테크·가전")
     # print(title.text, result.text)
     time.sleep(0.3)
 
@@ -48,4 +48,4 @@ df1 = pd.DataFrame({'title':wadiz_title, 'category':category})
 # df1 = pd.DataFrame({'title':wadiz_title, 'category':category, 'reward':results_reward})
 print(len(df1))
 import csv
-df1.to_csv("./예측데이터/wadiz_출판_예측데이터.csv".format(len(df1)), mode='w',encoding='utf-8-sig', index=False)
+df1.to_csv("./예측데이터/wadiz_테크·가전_예측데이터.csv".format(len(df1)), mode='w',encoding='utf-8-sig', index=False)
