@@ -15,8 +15,7 @@ print(df.head())
 print(df.tail())
 df.info()
 
-df = pd.read_csv('./crawling_data/crawling_data0.csv')
-df_headline = pd.read_csv('./crawling_data/naver_news_titles_20220526.csv')
-df_all = pd.concat([df, df_headline])
-df_all.to_csv('./crawling_data/wadiz_fundung_{}.csv'.format(
-     datetime.datetime.now().strftime('%Y%m%d')), index=False)
+df.to_csv('./crawling_data/wadiz_data_{}.csv'.format(
+    datetime.datetime.now().strftime('%Y%m%d')), index=False)
+# df.to_excel('./crawling_data/wadiz_data_{}.xlsx'.format(
+#     datetime.datetime.now().strftime('%Y%m%d')), index=False)
