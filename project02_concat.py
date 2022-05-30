@@ -2,7 +2,8 @@ import pandas as pd
 import glob
 import datetime
 
-data_path = glob.glob('./crawling_data/*')
+# data_path = glob.glob('./crawling_data/*')
+data_path = glob.glob('./예측데이터/*')
 print(data_path)
 
 df = pd.DataFrame()
@@ -15,7 +16,7 @@ print(df.head())
 print(df.tail())
 df.info()
 
-df.to_csv('./crawling_data/wadiz_data_{}.csv'.format(
+df.to_csv('./예측데이터/wadiz_data_예측데이터_{}.csv'.format(
     datetime.datetime.now().strftime('%Y%m%d')), index=False)
 # df.to_excel('./crawling_data/wadiz_data_{}.xlsx'.format(
 #     datetime.datetime.now().strftime('%Y%m%d')), index=False)
