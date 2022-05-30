@@ -9,12 +9,12 @@ import time
 import time
 from selenium import webdriver
 driver = webdriver.Chrome(executable_path= r"./chromedriver.exe")
-driver.get("https://www.wadiz.kr/web/wreward/category/297?keyword=&endYn=ALL&order=recommend")
+driver.get("https://www.wadiz.kr/web/wreward/category/293?keyword=&endYn=ALL&order=recent")
 
-time.sleep(1)
+time.sleep(2)
 
 try:
-    for i in range(24):
+    for i in range(1):
         button = driver.find_element_by_xpath(
             f'//*[@id="main-app"]/div[2]/div/div[5]/div[2]/div[2]/div/button')  # 더보기버튼 xpath
         time.sleep(0.5)
@@ -35,16 +35,17 @@ category = []
 
 for index, value in enumerate(rows):  #enumerate는 리스트가 있는 경우 순서와 리스트의 값을 전달하는 기능
     title=value.find_element_by_class_name("CommonCard_title__1oKJY")
-    result=value.find_element_by_class_name("RewardProjectCard_percent__3TW4_")
+    # result=value.find_element_by_class_name("RewardProjectCard_percent__3TW4_")
     wadiz_title.append(title.text)
-    results_reward.append(result.text)
+    # results_reward.append(result.text)
     category.append("출판")
-    print(title.text, result.text)
+    # print(title.text, result.text)
     time.sleep(0.3)
 
 import pandas as pd
 import numpy as np
-df1 = pd.DataFrame({'title':wadiz_title, 'category':category, 'reward':results_reward})
+df1 = pd.DataFrame({'title':wadiz_title, 'category':category})
+# df1 = pd.DataFrame({'title':wadiz_title, 'category':category, 'reward':results_reward})
 print(len(df1))
 import csv
-df1.to_csv("./crawling_data/wadiz_출판_size_{}.csv".format(len(df1)), mode='w',encoding='utf-8-sig', index=False)
+df1.to_csv("./예측데이터/wadiz_출판_예측데이터.csv".format(len(df1)), mode='w',encoding='utf-8-sig', index=False)
